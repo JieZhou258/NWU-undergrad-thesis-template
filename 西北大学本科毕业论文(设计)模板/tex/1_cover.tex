@@ -1,0 +1,44 @@
+% -*- coding=utf-8 -*-
+%\newcommand\clcNumber{O175.3}                        % 分类号
+                     % 二级学科名称
+\newcommand\addtion{教务处制} 
+\newcommand{\thesisTitle}{XXXX}
+\newcommand{\thesisAuthor}{XX}
+\newcommand{\studentId}{xxxxxxxx}
+\newcommand{\supervisor}{xxxxx}
+\newcommand{\institute}{xx学院}
+\newcommand{\major}{xxxxxx}
+\newcommand{\grade}{xxxxx}
+
+
+%============================================如有必要，以下内容可自行更改
+%封面背景为已经导出的具有偏移的PDF封面
+{                                                     
+    \setlength\parindent{0em}                                               % 设置首行缩进为0
+    \ThisTileWallPaper{\paperwidth}{\paperheight}{figure/nwucover.pdf}         % 设置封面背景
+    \vspace*{0.2cm}                                                         % 设置页面内容上间距
+ 
+    \vspace*{9.5cm}
+   % \begin{center}
+        %\zihao{3}  
+       % 题目：\underline{\makebox[9cm][c]{\heiti\zihao{2}\thesisTitle}}
+    %\end{center}
+%% 如果你的标题太长，想分两行，可以把上面这四行代码换成下面这段注释了的代码。
+     \begin{center}
+         {\zihao{3}  题目：}   \underline{\makebox[22em][c]{\zihao{2}\heiti 我的本科毕业论文题目}} \par
+        {\zihao{-3} \qquad\quad }   \underline{\makebox[22em][c]{\zihao{2}\heiti 实在是太长了 }} \par
+    \end{center}
+    \vspace{0.4cm}
+    \renewcommand{\baselinestretch}{2.25}\selectfont                           % 行间距
+    {
+        \begin{center}
+        \songti % 设置字体为宋体
+        {\zihao{-3} 学生姓名} \underline{\makebox[10em][c]{\zihao{-3}\thesisAuthor}} \par
+        {\zihao{-3} 学\;\;\;\;\;\;\;号} \underline{\makebox[10em][c]{\zihao{-3}\studentId}} \par
+        {\zihao{-3} 指导教师} \underline{\makebox[10em][c]{\zihao{-3}\supervisor}} \par
+        {\zihao{-3} 院\;\;\;\;\;\;\;系} \underline{\makebox[10em][c]{\zihao{-3}\institute}} \par
+        {\zihao{-3} 专\;\;\;\;\;\;\;业} \underline{\makebox[10em][c]{\zihao{-3}\major}} \par
+        {\zihao{-3} 年\;\;\;\;\;\;\;级} \underline{\makebox[10em][c]{\zihao{-3}\grade}} \par
+\end{center}
+    }
+}
