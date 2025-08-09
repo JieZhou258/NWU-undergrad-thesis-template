@@ -1,5 +1,7 @@
 % -*- coding=utf-8 -*-
 \chapter{写作示例}
+\songti\zihao{-4}
+\linespread{1.67} \selectfont
 
 \section{列表环境}
 
@@ -17,7 +19,7 @@
 
 使用环境\verb+enumerate+创建有序列表，使用方法与无序列表类似。
 
-\begin{enumerate}[label={\arabic*}]
+\begin{enumerate}[label={(\arabic*)}]
 	\item 这是一个有序列表。
 	\item 这是一个有序列表。
 	\item 这是一个有序列表。
@@ -34,7 +36,7 @@
 	\item 这是一个有序列表。
 \end{enumerate}
 \subsection{描述列表}
-使用环境\verb+description+可创建带有主题词的列表，条目语法是\verb+\item[主题] 内容+。示例如下：
+环境\verb+description+可创建带有主题词的列表，条目语法是\verb+\item[主题]内容+。示例如下：
 
 \begin{description}
 	\item[主题一] 详细内容
@@ -58,7 +60,7 @@ f^{ij}f^{k}\left [2\nabla _{i}R_{jk}-
 对于长公式换页可以使用\verb|align,align*|环境来支持换页。
 \subsection{定理环境}
 
-在这个模板中，我们有如下几个环境：definition(定义)，theorem(定理)，lemma(引理)，corollary(推论)，remark(注)，example(例)。
+在这个模板中，我们有如下环境：definition(定义)，theorem(定理)，lemma(引理)，corollary(推论)，remark(注)，example(例)。
 amsmath还提供了一个proof(证明)的环境。
 
 其中，定义，定理，引理按section连续编号，推论，注，例按chapter单独编号。
@@ -75,7 +77,7 @@ amsmath还提供了一个proof(证明)的环境。
 \end{definition}
 
 引理环境
-\begin{lemma}\rm{\cite{Azizov2003On}}\label{lem:Weierstrass}
+\begin{lemma}\label{lem:Weierstrass}
 	实轴上任一有界无限点集$S$至少有一个聚点。
 \end{lemma}
 
@@ -88,12 +90,10 @@ amsmath还提供了一个proof(证明)的环境。
 \begin{theorem}[望远镜公式]\label{thm:telescope}
 	$\left[\mathbb{Q}(a, b) : \mathbb{Q}\right]=\left[\mathbb{Q}(a, b) : \mathbb{Q}(a)\right]\left[\mathbb{Q}(a) : \mathbb{Q}\right] $
 \end{theorem}
-
 注环境
 \begin{remark}\label{rem:reversible}
 	每个操作都可逆。
 \end{remark}
-
 证明环境
 \begin{proof}
 	\autoref{thm:telescope} 告诉我们，对任意$s\in S$，均有$\lvert Orb(s)\rvert \cdot \lvert Stab(s)\rvert=\lvert G\rvert=p$。 于是$\lvert Orb(s)\rvert $整除$p$，这里$p$是一个素数。
@@ -106,8 +106,6 @@ amsmath还提供了一个proof(证明)的环境。
 	\end{equation}
 	注意到定义\ref{def:field}，\textbf{那些$\lvert Orb(s)\rvert =1$的元素$s$即为稳定元}，这就表明有$m$个稳定元。从上式立刻看出$\lvert S \rvert \equiv  m\; (\bmod\; p)$。
 \end{proof}
- 
-
 例子环境
 \begin{example}
 	用数列的柯西准则证明确界有界。
@@ -138,10 +136,10 @@ amsmath还提供了一个proof(证明)的环境。
   \label{tab:parameter}
   \begin{tabular}{ccccccccccc}
     \toprule
-    参数/情形 & $S(0)$ & $I(0)$ & $\Lambda$ & $\beta$ & $\mu$ & $\gamma$ & $\delta$ & $m$ & $\Theta_1$ & $\Theta_2$ \\
+    参数/情形 & $S(0)$ & $I(0)$ & $\Lambda$ & $\beta$ & $\mu$ & $\gamma$ & $\delta$  \\
     \midrule
-    情形1 & 0.7 & 0.8 & 0.6 & 0.4 & 0.3 & 0.1 & 0.2 & 0.1  & 0.08 & 0.07 \\
-    情形2 & 0.7 & 0.8 & 0.6 & 0.4 & 0.3 & 0.1 & 0.3 & 0.11 & 0.6  & 0.44 \\
+    情形1 & 0.7 & 0.8 & 0.6 & 0.4 & 0.3 & 0.1 & 0.2 \\
+    情形2 & 0.7 & 0.8 & 0.6 & 0.4 & 0.3 & 0.1 & 0.3 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -155,8 +153,8 @@ XeLatex 可以很方便地插入PDF、PNG、JPG格式的图片。插入PNG/JPG�
 	\includegraphics[width=6cm]{figure/example/model1_1000.png}
 	\hspace{1cm}
 	\includegraphics[width=6cm]{figure/example/model1_10000.png}
-	\bicaption{中文题图}
-	{English caption}
+	\bicaption{中文题图。}
+	{English caption.}
 	\label{fig1}
 \end{figure}
 
@@ -169,9 +167,12 @@ XeLatex 可以很方便地插入PDF、PNG、JPG格式的图片。插入PNG/JPG�
 	\hspace{4em}
 	\subcaptionbox{EPS 图像，如果标题很长的话，它会自动换行\label{fig3}}
 	{	\includegraphics[scale=0.5]{figure/example/purfer_left.eps}}
-	\bicaption{插入eps和pdf的例子（使用 subcaptionbox 方式）}{An EPS and PDF demo with subcaptionbox}
-	\label{fig4}
-\end{figure}。
+	\bicaption{插入eps和pdf的例子（使用 subcaptionbox 方式）}{An EPS and PDF demo with subcaptionbox。}
+	\label{fig4.}
+\end{figure}
+\begin{lemma}
+	实轴上任一有界无限点集$S$至少有一个聚点。
+\end{lemma}
 
 \section{插入代码}
 
@@ -185,7 +186,9 @@ int main() {
 }
 \end{lstlisting}
 在\autoref{code:1}中，我们插入了一个C语言的Hello World代码。
-
+\section{脚注}
+脚注可以使用\verb|\footnote|命令添加，脚注会自动编号。示例如下：
+这是一个脚注\footnote{这是一个脚注的内容}，这是第二个脚注的内容\footnote{这是第二个脚注的内容}。
 \section{标签和引用}
 
 这一节给出的是一些标签和引用的例子。
@@ -218,34 +221,7 @@ int main() {
 
 \section{文献的添加和引用}
 
-本模板的参考文献数据统一存放在\verb|bib/|目录下的\verb|ref.bib|文件中，如需添加文献，可以在INSPIRE HEP，百度学术，Google Scholar等界面查找到对应文献的\verb|bibtex|格式引用信息，然后附在\verb|ref.bib|文件末端即可。期刊，图书，学位论文的规范的\verb|bibtex|文献信息如下：
-\begin{lstlisting}
-@article{Sjostrand:2006za,
-    author = "Sjostrand, Torbjorn and Mrenna, Stephen and Skands, Peter Z.",
-    title = "{PYTHIA 6.4 Physics and Manual}",
-    journal = "JHEP",
-    volume = "05",
-    number="15"
-    pages = "026--029",
-    year = "2006"
-}
-@book{zhang2020,
-  author    = {张波 and 张景肖},
-  title     = {应用随机过程},
-  edition   = {1},
-  publisher = {清华大学出版社},
-  address   = {北京},
-  year      = {2004},
-  pages = {74--108},
-}
-@phdthesis {1015957626.nh,
-author = { 张向华 },
-title = {几类带Lévy跳的随机传染病模型的动力学性质分析},
-address={哈尔滨},
-school = {哈尔滨工业大学},
-year = {2014}
-}
-\end{lstlisting}
+本模板的参考文献数据统一存放在\verb|bib/|目录下的\verb|ref.bib|文件中，如需添加文献，可以在INSPIRE HEP，百度学术，Google Scholar等界面查找到对应文献的\verb|bibtex|格式引用信息，然后附在\verb|ref.bib|文件末端即可。
 第一行表明这个文献的类型是\verb|article|以及引用关键字为\verb|Sjostrand:2006za|。
 
 文献添加后，如果需要引用，使用\verb|\cite{label}|命令即可，支持引用单个或多个文献。
@@ -253,7 +229,7 @@ year = {2014}
 
 命令\verb|\cite{Sjostrand:2006za}|的使用效果：在\cite{Sjostrand:2006za}中，作者已经阐述了有关结论。
 
-命令\verb|\cite{bierlich2022comprehensive,王亚平2006}|的使用效果：在\cite{bierlich2022comprehensive,王亚平2006}中，作者有...
+命令\verb|\cite{bierlich2022comprehensive,王亚平2006}|使用效果：在\cite{bierlich2022comprehensive,王亚平2006}中，作者有...
 
 {\bf \textcolor{red}{重要提示}}：
 如果在引用时发现不能正常显示引用标志的话，进入模板根目录下的\verb|cmd|环境，输入\verb|biber main|命令，然后再次编译即可。

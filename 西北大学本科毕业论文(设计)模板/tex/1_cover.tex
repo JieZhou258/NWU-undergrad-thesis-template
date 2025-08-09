@@ -1,35 +1,43 @@
-% -*- coding=utf-8 -*-
-%\newcommand\clcNumber{O175.3}                        % 分类号
-                     % 二级学科名称
-\newcommand\addtion{教务处制} 
-\newcommand{\thesisTitle}{XXXX}
-\newcommand{\thesisAuthor}{XX}
-\newcommand{\studentId}{xxxxxxxx}
-\newcommand{\supervisor}{xxxxx}
-\newcommand{\institute}{xx学院}
-\newcommand{\major}{xxxxxx}
-\newcommand{\grade}{xxxxx}
+% -*- coding=utf-8 -*-   % 指定文件编码为 UTF-8，确保中文正常显示
 
+%\newcommand\clcNumber{O175.3}    % 分类号（可选），如不需要可注释掉
+                                  % 二级学科名称（此处为空，可自行添加）
+\newcommand\addtion{教务处制}     % 附加说明，通常为制表单位
+\newcommand{\thesisTitle}{XXXX}   % 论文标题
+\newcommand{\thesisAuthor}{XX}    % 学生姓名
+\newcommand{\studentId}{xxxxxxxx} % 学号
+\newcommand{\supervisor}{xxxxx}   % 指导教师姓名
+\newcommand{\institute}{xx学院}   % 学院名称
+\newcommand{\major}{xxxxxx}       % 专业名称
+\newcommand{\grade}{xxxxx}        % 年级
 
-%============================================如有必要，以下内容可自行更改
-%封面背景为已经导出的具有偏移的PDF封面
-{                                                     
-    \setlength\parindent{0em}                                               % 设置首行缩进为0
-    \ThisTileWallPaper{\paperwidth}{\paperheight}{figure/nwucover.pdf}         % 设置封面背景
-    \vspace*{0.2cm}                                                         % 设置页面内容上间距
- 
-    \vspace*{9.5cm}
-   % \begin{center}
-        %\zihao{3}  
-       % 题目：\underline{\makebox[9cm][c]{\heiti\zihao{2}\thesisTitle}}
-    %\end{center}
-%% 如果你的标题太长，想分两行，可以把上面这四行代码换成下面这段注释了的代码。
-     \begin{center}
-         {\zihao{3}  题目：}   \underline{\makebox[22em][c]{\zihao{2}\heiti 我的本科毕业论文题目}} \par
+% ============================= 封面页面设置（如有必要可自行更改） =============================
+
+% 封面背景为已导出的 PDF 文件（建议封面背景图为无白边且对齐的 PDF）
+{
+    \setlength\parindent{0em} % 取消首行缩进
+    \ThisTileWallPaper{\paperwidth}{\paperheight}{figure/nwucover.pdf} % 设置封面背景图片
+    \vspace*{0.2cm} % 设置页面内容的上边距
+
+    \vspace*{9.5cm} % 控制标题区域的垂直位置
+
+    % ============================= 论文标题设置 =============================
+    % 如果标题较短，可使用以下单行写法（已注释）：
+    % \begin{center}
+    %     \zihao{3}  题目：\underline{\makebox[9cm][c]{\heiti\zihao{2}\thesisTitle}}
+    % \end{center}
+
+    % 如果标题较长，可使用如下分两行写法（当前启用）：
+    \begin{center}
+        {\zihao{3}  题目：}   \underline{\makebox[22em][c]{\zihao{2}\heiti 我的本科毕业论文题目}} \par
         {\zihao{-3} \qquad\quad }   \underline{\makebox[22em][c]{\zihao{2}\heiti 实在是太长了 }} \par
     \end{center}
-    \vspace{0.4cm}
-    \renewcommand{\baselinestretch}{2.25}\selectfont                           % 行间距
+
+    \vspace{0.4cm} % 控制标题与学生信息之间的垂直间距
+
+    \renewcommand{\baselinestretch}{2.25}\selectfont % 设置行间距
+
+    % ============================= 学生信息区域 =============================
     {
         \begin{center}
         \songti % 设置字体为宋体
@@ -39,6 +47,6 @@
         {\zihao{-3} 院\;\;\;\;\;\;\;系} \underline{\makebox[10em][c]{\zihao{-3}\institute}} \par
         {\zihao{-3} 专\;\;\;\;\;\;\;业} \underline{\makebox[10em][c]{\zihao{-3}\major}} \par
         {\zihao{-3} 年\;\;\;\;\;\;\;级} \underline{\makebox[10em][c]{\zihao{-3}\grade}} \par
-\end{center}
+        \end{center}
     }
 }

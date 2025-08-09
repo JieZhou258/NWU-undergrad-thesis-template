@@ -1,279 +1,206 @@
-% -*- coding=utf-8 -*-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%
-%  本模板格式在陕西师范大学理工科模板上进行了修改使符合本校论文格式要求，如有错误，请自行修改。
-%   西北大学理工科本科生毕业论文LaTeX模板
-%   使用要求：
-%       编译器：XeLatex(2019+)，建议关闭拼写检查
-%   使用方法：
-%       编辑/tex目录下的各个tex文件的文件内容
-%       最后编译main.tex
-%       警告：需要修改配置就编辑main.tex的内容，编辑内容去/tex目录下的各个文件
-%   创建日期：2023/01/25
-%   最后修改日期：2025/05/22
-%	内容结构：
-%		文档类型，宏包管理，页面边距，页眉页脚，章节标题，目录设置，参考文献，定理环境，
-%		图表环境，代码环境，引用工具，其余设定，正文内容
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[twoside,12pt,openright,AutoFakeBold]{ctexbook}
 
-%=================================文档类型=====================================================
-%	毕业论文选取ctexbook比较合适
-%	twoside命令，设置为双面排版，左右页边距会根据奇偶页自动调整
-%	12pt，字体大小，默认为10pt
-%	openright命令，默认openright，即为新的一章在右手边开始
-\documentclass[twoside, 12pt, openright,AutoFakeBold]{ctexbook}	% 文档类型
-% AutoFakeBold（它会传递给 xeCJK 和 fontspec）来打开全局的伪粗体功能，从而可以使用加粗的宋体。因为TeX本就没有粗体形式的宋体，伪粗体可以模仿得很像。
-
-%=================================宏包管理=====================================================
-%	和配置有关的宏包在具体的配置区引用，这里只引用正文区用到的宏包
-\usepackage{wallpaper}	% 封面背景包
-\usepackage{amsmath,mathtools,amsthm,amsfonts,amssymb,bm}	% AMS包
-\usepackage{color}  %字体背景颜色包
-
-%=================================页面边距=====================================================
-%	geometry宏包使用教程：http://www.ctex.org/documents/packages/layout/geometry.htm
-%	A4纸宽210mm，长297mm
-%	left + right + textwidth = 210
-%	top + bottom + textheight = 297
-%	headheight：页眉文字高度，应当小于等于top
-\usepackage{geometry}		% 页面边距包
-\geometry{
-	a4paper,
-	inner=45mm,
-	outer=20mm,
-	top=25mm,
-	bottom=20mm,
-	textheight=244mm,
-	%textwidth=155mm,
-	headheight=21.7mm
-}
-%=================================页眉页脚=====================================================
-%	fancy宏包使用教程：http://www.ctex.org/documents/packages/layout/fancyhdr.htm
-%	fancypagestyle{样式名}可以自定义样式，并通过\pagestyle{样式名}和\thispagestyle{样式名}来使用
-%   \leftmark可以获取不带星号的chapter标题内容，\rightmark可以获取到不带星号的section标题内容
-%   L, C, R分别表示左中右，
-%   E, O分别表示偶数页和奇数页
-\usepackage{fancyhdr}								% 页眉页脚包
-\usepackage{fontspec}
-\setmainfont{Times New Roman} % 设置英文字体
-\usepackage{setspace} % 段落行距包
-\setstretch{1.5} % 设置行距为1.5倍行距  后面覆盖掉
-\raggedbottom
-
-\usepackage{indentfirst} %段落首行缩进命令包
+%======================= 宏包加载（正文相关） ===========================
+\usepackage{wallpaper}     % 封面背景
+\usepackage{amsmath,mathtools,amsthm,amsfonts,amssymb,bm}  % AMS 数学宏包
+\usepackage{color}         % 支持颜色设置
+\usepackage{fontspec}      % 字体设置（适用于 XeLaTeX）
+\usepackage{setspace}      % 行距设置
+\usepackage{indentfirst}   % 首段缩进
 \setlength{\parindent}{2em}
-\fancypagestyle{myfancy}{%
-	\fancyhf{}	                                    % 清空所有定义
-	\fancyfoot[CE,CO]{\thepage}                     % 设置页脚为当前页码
-	\fancyhead[CE]{\songti\zihao{5}西北大学本科毕业论文（设计）}        % 设置偶数页居中的页眉为陕西师范(西北)大学本科毕业论文（设计）
-	%\fancyhead[CO]{\songti\zihao{5}西北大学本科毕业论文（设计）}
-    \fancyhead[CO]{\nouppercase{\leftmark}}         % 设置奇数页居中的页眉为当前章节名
-	\renewcommand{\headrule}{%                      % 重定义headrule来实现双页眉装饰线效果
-	    \makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{3pt}}%
-	    \rule[.6\baselineskip]{\headwidth}{0.4pt}\vskip-.8\baselineskip
+
+%======================= 页面设置 ===========================
+\usepackage{geometry}      % 页面边距设置
+\geometry{
+    a4paper,
+    inner=45mm,
+    outer=20mm,
+    top=25mm,
+    bottom=20mm, % 添加底部页边距
+    %textheight=244mm,
+    headheight=21.7mm
+}
+
+%======================= 页眉页脚设置 ===========================
+\usepackage{fancyhdr}      % 自定义页眉页脚
+\fancypagestyle{myfancy}{
+    \fancyhf{}  % 清空原有设置
+    \fancyfoot[CE,CO]{\thepage}
+    \fancyhead[CE]{\songti\zihao{5}西北大学本科毕业论文（设计）}
+    \fancyhead[CO]{\nouppercase{\leftmark}}
+    \renewcommand{\headrule}{
+        \makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{3pt}}%
+        \rule[.6\baselineskip]{\headwidth}{0.4pt}\vskip-.8\baselineskip
     }
 }
-%页脚脚注
-\usepackage{pifont} % 用于使用 \ding 命令
-\usepackage{alphalph} % 可选，用于扩展编号
 
-\usepackage{chngcntr}  % 控制编号关联
-\counterwithout{footnote}{chapter} % 脚注全局编号，不随章节变
-
-% 定义圆圈数字（支持 ①②③…）
+%======================= 脚注设置 ===========================
+\usepackage{pifont}        % 用于 \ding 圆圈数字
+\usepackage{alphalph}      % 脚注编号扩展
+\usepackage{chngcntr}      % 编号控制
+\counterwithout{footnote}{chapter}  % 脚注全局编号
 \newcommand{\circled}[1]{\ding{\numexpr171 + #1\relax}}
-
-% 脚注编号样式为圆圈数字
 \renewcommand{\thefootnote}{\protect\circled{\value{footnote}}}
 
-%=================================章节标题=====================================================
-\usepackage{ctex}
-
-\ctexset{ % 用来定制正文里的标题格式
-    fontset = heiti,        % 使用楷体系列
-    %kai-family = "KaiTi_GB2312
-	chapter = {%
-		name = {},
-		%number = \arabic{chapter},   
-        number = 第\Chinese{chapter}章,% 用阿拉伯数字显示章节号
-		format += {\heiti\zihao{-2} \centering},       % 设置章节标题为3号黑体且居中
-		beforeskip = 36pt,			            % 设置章节标题前的垂直间距为36pt，默认为50pt
-		afterskip = 24pt,			            % 设置章节标题后的垂直间距为24pt，默认为40pt
-		fixskip = true				            % 设置固定间距为true，抑制标题前后的多余间距
-	},
-	section = {%
-		format += {\heiti\zihao{4}\raggedright},   % section格式添加一条：左对齐
+%======================= 标题格式设置 ===========================
+\ctexset{
+    chapter = {
+        name = {},
+        number = 第\Chinese{chapter}章,
+        format += {\heiti\zihao{-2}\centering},
+        beforeskip = 36pt,
+        afterskip = 24pt,
+        fixskip = true
+    },
+    section = {
+        format += {\heiti\zihao{4}\raggedright},
         beforeskip = 18pt,
         afterskip = 18pt
-	},
-	subsection = {%
-		format += {\heiti\zihao{-4}\raggedright},    % subsection格式添加一条：左对齐
+    },
+    subsection = {
+        format += {\heiti\zihao{-4}\raggedright},
         beforeskip = 12pt,
         afterskip = 12pt
-	}
     }
+}
 
-%=================================目录设置=====================================================
-%	titletoc宏包使用教程：https://blog.csdn.net/golden1314521/article/details/39926135
-%						 https://blog.csdn.net/l_changyun/article/details/87431805
-%
-\usepackage{titletoc}		                % 目录定制包
-\renewcommand{\contentsname}{\heiti \zihao{-2}目\quad 录}    % 通过重新定义目录页的标题使得目录中间加上了空格
-% \titlecontents 用来定制目录里的标题格式
-\titlecontents%	章
-	{chapter}[3em]
-	{\vspace*{7pt}\heiti\zihao{4}}
-	{\contentslabel{3.5em}}
-	{\hspace*{-3.4em}}
-	{~\titlerule*[0.6pc]{$.$}~\zihao{-4}\contentspage}
-\titlecontents%	节
-	{section}[4em]
-	{\songti\zihao{-4}}
-	{\contentslabel{2em}}
-	{\hspace*{-2em}}
-	{~\titlerule*[0.6pc]{$.$}~\contentspage}
-\titlecontents%	小节
-	{subsection}[6em]
-	{\songti\zihao{-4}}
-	{\contentslabel{3em}}
-	{\hspace*{-2em}}
-	{~\titlerule*[0.6pc]{$.$}~\contentspage}
+%======================= 目录格式设置 ===========================
+\usepackage{titletoc}
+\renewcommand{\contentsname}{\heiti \zihao{-2}目\quad 录}
 
-%=================================参考文献=====================================================
-%   biblatex宏包使用教程：
-%	https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex
-%
-\usepackage[%
-	backend=biber,				% 设置使用biber进行编译，也可以使用bibtex，但是功能更少
-	style=gb7714-2015,			% 设置风格样式为国家标准gb7714-2015
-	sorting=none					% 设置排序按照年份，名字，标题进行排序，若想按照引用顺序排序，将其设置为none即可
-	]{biblatex}       			% 参考文献包
-\addbibresource{bib/ref.bib}    % 加载参考文献的文件
+\titlecontents{chapter}[3em]
+    {\vspace*{7pt}\heiti\zihao{4}}
+    {\contentslabel{3.5em}}
+    {\hspace*{-3.4em}}
+    {~\titlerule*[0.6pc]{$.$}~\zihao{-4}\contentspage}
 
+\titlecontents{section}[4em]
+    {\songti\zihao{-4}}
+    {\contentslabel{2em}}
+    {\hspace*{-2em}}
+    {~\titlerule*[0.6pc]{$.$}~\contentspage}
 
-%=================================定理环境=====================================================
-% 	自定义定理类环境（定义，引理，定理，推论，例，注）
-% 		定理环境命令：\newtheorem{name}[counter]{text}[section]
-% 			name:		标识这个环境的关键字（用于编程）
-%			counter:	（可选）编号计数器，默认使用自己的计数器，可以传入其他环境的name来共享计数器
-% 			text:		真正在文档中打印出来的定理环境的名字
-% 			section:	（可选）定理编号依赖的某个章节层次，默认不依赖。
-%
-\newtheoremstyle{mydefstyle}% 样式名称
-  {1em}                     % 上方间距
-  {1em}                     % 下方间距
-  {}                        % 正文字体
-  {}                        % 缩进
-  {\heiti \zihao{-4}}       % 标题字体（这里为小四号黑体）
-  {.}                       % 后缀（冒号、点等）
-  {1em}                     % 标题与正文间距
-  {}                        % 自定义标题格式
+\titlecontents{subsection}[6em]
+    {\songti\zihao{-4}}
+    {\contentslabel{3em}}
+    {\hspace*{-2em}}
+    {~\titlerule*[0.6pc]{$.$}~\contentspage}
+
+%======================= 参考文献设置 ===========================
+\usepackage[
+    backend=biber,
+    style=gb7714-2015,
+    sorting=none
+]{biblatex}
+\addbibresource{bib/ref.bib}
+
+%======================= 定理环境定义 ===========================
+\newtheoremstyle{mydefstyle}
+  {1em}{1em}{}{}{\heiti \zihao{-4}}{.}{1em}{}
 \theoremstyle{mydefstyle}
-\newtheorem{definition}{\hskip 2em{定义}}[section]
 
+\newtheorem{definition}{\hskip 2em{定义}}[section]
 \newtheorem{theorem}{\hskip 2em{定理}}[section]
 \newtheorem{assumpation}[theorem]{\hskip 2em{假设}}
-%\newtheorem{definition}[theorem]{\hskip 2em{定义}}
 \newtheorem{lemma}[theorem]{\hskip 2em{引理}}
 \newtheorem{corollary}[theorem]{\hskip 2em{推论}}
-% 例，注各自独立编号，无需考虑编号共享的问题，直接创建。证明关键词加粗
 \newtheorem{example}{\hskip 2em{算例}}[chapter]
 \newtheorem{remark}{\hskip 2em{注}}[chapter]
 \renewcommand{\proofname}{\bf 证明}
+
+%======================= 图表设置 ===========================
 \usepackage{bicaption}
-\captionsetup[figure][bi-second]{name=Fig} %设置图的英文编号前缀
-\captionsetup[table][bi-second]{name=Table} %设置表的英文编号前缀
-% 去掉定理后面的小点，不建议使用（默认注释掉）
-% \usepackage{xpatch}
-% \makeatletter
-% \AtBeginDocument{\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}}
-% \makeatother
+\captionsetup[figure][bi-second]{name=Fig}
+\captionsetup[table][bi-second]{name=Table}
 
-% 公式按section编号，若想按chapter编号，注释掉这条即可
-%\numberwithin{equation}{section}
-
-%=================================图表环境=====================================================
-% enumitem宏包设置参考自中南大学学位论文模板
-\usepackage[inline]{enumitem}					% 列表工具包
-\usepackage{graphicx,ragged2e}							% 插图工具包
-\usepackage{subcaption}							% 子图标题包
-\usepackage{bicaption}							% 图片标题包
-\setlist{%	设置列表样式
-	topsep=0.3em, 			% 列表顶端的垂直空白
-	partopsep=0pt, 			% 列表环境前面紧接着一个空白行时其顶端的额外垂直空白
-	itemsep=0ex plus 0.1ex, % 列表项之间的额外垂直空白
-	parsep=0pt, 			% 列表项内的段落之间的垂直空白
-	leftmargin=1.5em, 		% 环境的左边界和列表之间的水平距离
-	rightmargin=0em, 		% 环境的右边界和列表之间的水平距离
-	labelsep=0.5em, 		% 包含标签的盒子与列表项的第一行文本之间的间隔
-	labelwidth=2em 			% 包含标签的盒子的正常宽度；若实际宽度更宽，则使用实际宽度。
-}
-\graphicspath{figure/}		% 设置图片存放目录
-\usepackage{longtable,booktabs} % 跨页长表格
-
-%=================================代码环境=====================================================
-% 使用listings宏包来插入代码
-\usepackage{listings}	% 代码环境包
-\renewcommand{\lstlistingname}{算法}	% 重命名代码块标题为算法，例如：算法1.2
-\lstset{% 设置算法样式
-	keywordstyle=\bfseries, % 设置关键词加粗
-	basicstyle=\ttfamily, 	% 设置基础样式字体为等宽
-	commentstyle=\ttfamily, % 基本和注释的字体都使用默认的等宽，而非texlive调用的中文字体
-	showstringspaces=false, % 不显示中间的空格
-	breaklines=true,  		% 对过长的代码自动换行
-	frame=single  			% 边框
-}
-
-%=================================引用工具=====================================================
-% hyperref宏包教程https://www.jianshu.com/p/58e7d0a6d97a
-% 实现超链接功能
-\usepackage{hyperref}	% 交叉引用包
-\hypersetup{%	设置交叉引用属性
-	colorlinks=true,	% 设置可跳转的链接为颜色，而不是方框
-	urlcolor=black,		% 设置各种链接的颜色均为黑色
-	linkcolor=black,
-	anchorcolor=black,
-	citecolor=black
-}
-
-%=================================其余设定=====================================================
-% 重新定义一些常用的数学符号
+%======================= 数学符号与公式编号 ===========================
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 \newcommand{\mi}{\mathrm{i}}
 \newcommand{\md}{\mathrm{d}}
 \newcommand{\me}{\mathrm{e}}
 \allowdisplaybreaks[4]
+%\numberwithin{equation}{section} % 若需要按章节编号
+
+%======================= 列表设置 ===========================
+\usepackage[inline]{enumitem}
+\setlist{
+    topsep=0.3em,
+    partopsep=0pt,
+    itemsep=0ex plus 0.1ex,
+    parsep=0pt,
+    leftmargin=1.5em,
+    rightmargin=0em,
+    labelsep=0.5em,
+    labelwidth=2em
+}
+
+%======================= 图像与表格 ===========================
+\usepackage{graphicx,ragged2e}
+\usepackage{subcaption}
+\graphicspath{figure/}
+\usepackage{longtable,booktabs}
+
+%======================= 代码环境 ===========================
+\usepackage{listings}
+\renewcommand{\lstlistingname}{算法}
+\lstset{
+    keywordstyle=\bfseries,
+    basicstyle=\ttfamily,
+    commentstyle=\ttfamily,
+    showstringspaces=false,
+    breaklines=true,
+    frame=single
+}
+
+%======================= 超链接设置 ===========================
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=black,
+    linkcolor=black,
+    anchorcolor=black,
+    citecolor=black
+}
+
+%======================= 插入 PDF ===========================
 \usepackage[final]{pdfpages}
-%=================================正文内容=====================================================
+
+%======================= 正文开始 ===========================
 \begin{document}
-    \frontmatter                                	% 关闭章节序号， 页码默认使用小写罗马数字
-        \pagestyle{empty}                           % 设置封面和原创性声明的页面样式为空
-        \include{tex/1_cover}                       % 载入封面      
-        \includepdf[pages={1}]{figure/command.pdf}                 % 载入原创性声明
-        \pagestyle{plain}
-        \pagenumbering{Roman}						% 切换页码至大写罗马数字显示
-        \let\cleardoublepage\clearpage
-        \include{tex/3_abstract_cn}   
-        % 载入中文摘要
-        \cleardoublepage
 
-        \include{tex/4_abstract_en}                 % 载入英文摘要
+%========= 前置部分 =========
+\frontmatter
+\pagestyle{empty}
+\include{tex/1_cover} %封面
+\includepdf[pages={1}]{figure/Declaration.pdf} %诚信声明
+\pagestyle{plain}
+\pagenumbering{Roman}
+\let\cleardoublepage\clearpage
+\include{tex/3_abstract_cn} %中文摘要
+\cleardoublepage
+\include{tex/4_abstract_en} %英文摘要
 
-        \pagestyle{plain}
-        \setcounter{page}{1}
-        \pagenumbering{Roman}        
-        \tableofcontents                    		% 载入目录
-        \clearpage									% 跳到目录下一页
-        \thispagestyle{plain}						% 显示最后一页的页码
-    \mainmatter                                 	% 开启章节序号计数，重置页码，页码使用阿拉伯数字
-        \fancypagestyle{plain}{\pagestyle{myfancy}} % 设置默认的页面类型plain为自定义样式fancy
-        \pagestyle{myfancy}							% 设置页面布局为自定义的myfancy
-       
-        \include{tex/5_chapters}                    % 载入章节内容
-    \backmatter                                 	% 关闭章节序号，对页码没有影响
-      %  \include{tex/6_conclusion}                  % 载入总结
-        \include{tex/7_reference}					% 载入参考文献
-       % \include{tex/8_Appendix}                      % 载入致谢
-        \include{tex/9_thanks}           	
+
+%========= 目录部分 =========
+\pagestyle{plain}
+\setcounter{page}{1}
+\pagenumbering{Roman}
+\tableofcontents
+\clearpage
+\thispagestyle{plain}
+
+%========= 正文部分 =========
+\mainmatter
+\fancypagestyle{plain}{\pagestyle{myfancy}}
+\pagestyle{myfancy}
+\include{tex/5_chapters} %正文章节
+
+%========= 附录部分 =========
+\backmatter
+
+\include{tex/7_reference}
+%\include{tex/8_Appendix}
+\include{tex/9_thanks}
+
 \end{document}

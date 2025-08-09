@@ -2,33 +2,23 @@
 \chapter[基础]{基础}  % \chapter[短标题]{长标题} 页眉会显示短标题，正文会显示长标题，“\\"会强制换行，”\ “会显示空格题目：要体现专业特点，应精练、准确地概括论文研究的主要内容和结果，一般不超过 20 字。
 \songti\zihao{-4}
 \linespread{1.67} \selectfont
-这是一个西北大学学位论文模板，参考来自\href{https://www.overleaf.com/latex/templates/shan-xi-shi-fan-da-xue-li-gong-ke-lei-ben-ke-sheng-bi-ye-lun-wen-texmo-ban/rkxzpttqqzyt}{\color{red}{陕西师范大学模板}}。
 
-这份模板主要基于同学之间流传的模板以及网上其他高校的学位论文模板，结合少量个人审美。
-由于学校没有相应的论文规范文件，因此模板里的很多参数都是参考其他模板以及个人审美得来的。
-大家可以根据自己需要适当修改。
+本模板为西北大学学士学位论文的 \LaTeX 排版示例，参考自\href{https://www.overleaf.com/latex/templates/shan-xi-shi-fan-da-xue-li-gong-ke-lei-ben-ke-sheng-bi-ye-lun-wen-texmo-ban/rkxzpttqqzyt}{\color{red}{陕西师范大学本科生毕业论文模板}}，并依据学校提供的论文写作规范进行了适当修改与优化。如模板中存在不符合个人或学校实际要求之处，可根据需要自行调整。
 
 \section{文档说明}
 
 \subsection{准备工作}
 
-如果在Overleaf上编译，只需在菜单栏里设置编译器为XeLatex即可正常运行。
+在 \textbf{\textcolor{green}{Overleaf}} 平台上使用本模板时，只需在菜单栏中将编译器设置为 \textbf{\textcolor{green}{XeLaTeX}}，即可正常编译运行。
 
-如果下载到本地使用，首先必须安装Texlive2017或更新的版本，编译器选择为Xelatex。
-然后安装编辑器，推荐安装TeXstudio，在使用TeXstudio之前，需要进行一些设置。
-进入到TeXstudio设置界面，在命令子界面将Latexmk设置为（注意Latexmk在比较下面的位置，鼠标往下滑）
+若在本地使用，需先安装 \textbf{\textcolor{green}{TeX Live 2024}} 作为编译环境，并选择合适的编辑器（如 \textbf{\textcolor{green}{TeXstudio}} 或 \textbf{\textcolor{green}{Visual Studio Code}}）。安装方法可参考互联网资源（如 \textbf{\textcolor{green}{Bilibili}}、\textbf{\textcolor{green}{CSDN}}、\textbf{\textcolor{green}{博客园}}等），或选择在 \textbf{\textcolor{green}{淘宝}}、\textbf{\textcolor{green}{京东}} 等平台寻求远程安装服务。
 
-{\centering latexmk.exe -xelatex -silent -synctex=1 \% \par}
-然后在构建子界面将默认编译器修改为latexmk，最后打开模板的main.tex然后按F5来构建查看。
+\subsection{编译方法}
 
-\subsection{怎么编译}
+在 \textbf{\textcolor{green}{Overleaf}} 中，点击“编译”按钮即可完成编译。
 
-Overleaf上只需要点击编译即可。
+在本地使用 \textbf{\textcolor{green}{VS Code}} 时，若仅需快速编译正文而不更新参考文献，可直接选择 \textbf{\textcolor{green}{XeLaTeX}} 编译，以加快速度；若需要重新生成参考文献，则应选择 \textbf{\textcolor{green}{XeLaTeX \& Biber}} 编译方式。
 
-在TeXstudio上，首先打开main.tex文件，然后左侧的文件结构会显示与之关联的tex文件以及参考文献。
-点击任何一个关联的文件都可以直接打开对应的编辑界面。最后在任意一个tex文件的编辑界面都可以直接按F5来构建查看。
-
-一个小技巧，在第一次编译之后，新增内容后只需要按ctrl+s键保存，等待两三秒，TeXstudio就会自动编译，内嵌的PDF阅读器也会同步显示新增的内容。
 
 \section{模板文件结构}
 
